@@ -20,6 +20,7 @@ def book_update(request, id=id):
     form = BookForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
+        return redirect('/books/')
     context = {
         'form': form
     }
@@ -30,7 +31,6 @@ def book_list(request):
     context = {
         "list": queryset
     }
-    print(list)
     return render(request,"book_list.html",context)
 
 
